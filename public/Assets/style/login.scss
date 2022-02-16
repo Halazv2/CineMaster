@@ -42,10 +42,6 @@ body {
     transform-style: preserve-3d;
   }
 
-  #flip:checked ~ .cover {
-    transform: rotateY(-180deg);
-  }
-
   .cover {
     .front,
     .back {
@@ -56,11 +52,6 @@ body {
       width: 100%;
     }
   }
-}
-
-.cover .back {
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
 }
 
 .container .cover {
@@ -83,7 +74,6 @@ body {
     opacity: 0.5;
     z-index: 12;
     opacity: 0.3;
-    transform: rotateY(180deg);
     backface-visibility: hidden;
   }
 
@@ -134,7 +124,7 @@ body {
   .form-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
   }
 }
 
@@ -256,11 +246,6 @@ body {
     margin-top: 25px;
   }
 }
-
-.container #flip {
-  display: none;
-}
-
 @media (max-width: 730px) {
   .container .cover {
     display: none;

@@ -52,11 +52,6 @@ body {
           transform-style: preserve-3d;
 }
 
-.container #flip:checked ~ .cover {
-  -webkit-transform: rotateY(-180deg);
-          transform: rotateY(-180deg);
-}
-
 .container .cover .front,
 .container .cover .back {
   position: absolute;
@@ -64,13 +59,6 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
-}
-
-.cover .back {
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
 }
 
 .container .cover::before {
@@ -92,8 +80,6 @@ body {
   opacity: 0.5;
   z-index: 12;
   opacity: 0.3;
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
@@ -156,9 +142,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .form-content .login-form,
@@ -273,10 +259,6 @@ body {
 .forms .form-content .sign-up-text {
   text-align: center;
   margin-top: 25px;
-}
-
-.container #flip {
-  display: none;
 }
 
 @media (max-width: 730px) {
