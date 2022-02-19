@@ -1,0 +1,121 @@
+// @import url(login.scss);
+// @use "login";
+$primeryColor: #e42f2f;
+$secColor: white;
+$thcolor: #751c1c;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 10px;
+  background-color: $primeryColor;
+  color: #fff;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  // user-select: none;
+}
+
+.nav-links a {
+  color: #fff;
+}
+
+/* LOGO */
+
+.logo {
+  width: 56%;
+  img {
+    width: 10%;
+    height: 10%;
+  }
+}
+/* NAVBAR MENU */
+
+.menu {
+  display: flex;
+  gap: 1em;
+  font-size: 18px;
+
+  li {
+    &:hover {
+      background-color: $thcolor;
+      border-radius: 3px;
+      transition: 0.7s ease;
+    }
+    
+    padding: 5px 14px;
+  }
+}
+.logout-btn {
+  color: #fff;
+  padding: 10px;
+  background: $thcolor;
+  border-radius: 3px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.4s ease;
+
+  &:hover {
+    opacity: 0.9;
+    background: $thcolor;
+  }
+}
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    position: absolute;
+    background-color: $primeryColor;
+    right: 0;
+    left: 0;
+    // top: 90px;
+    text-align: center;
+    padding: 16px 0;
+
+    li {
+      &:hover {
+        display: inline-block;
+        background-color: $thcolor;
+        transition: 0.3s ease;
+      }
+
+      + li {
+        margin-top: 12px;
+      }
+    }
+  }
+
+  input[type="checkbox"]:checked ~ .menu,
+  .hamburger {
+    display: block;
+  }
+
+  .logo {
+    // font-size: 32px;
+    img {
+      //   object-fit: ;
+      width: 25%;
+      height: 10%;
+    }
+  }
+}

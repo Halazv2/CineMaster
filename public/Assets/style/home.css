@@ -1,0 +1,153 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #292929;
+}
+
+.add-post {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #f0606096;
+  margin-top: 20px;
+  border-radius: 3px;
+}
+
+.add-post .form {
+  margin-top: 20px;
+  line-height: 30px;
+  width: 100%;
+  padding: 30px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: none;
+}
+
+.slideer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  vertical-align: middle;
+  display: none;
+}
+
+.slider .whatsNew {
+  width: 25%;
+  margin-top: 20px;
+  padding: 30px;
+  background-color: #575656;
+}
+
+.slider .whatsNew .whatsNew-Card .story {
+  color: aliceblue;
+}
+
+.slider .whatsNew .whatsNew-Card figure img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-posts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 21px;
+  margin-top: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.card-posts .card {
+  padding: 4px 8px 5px;
+  width: 60%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.card-posts .card .posts .post-content .post-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-posts .card .posts .post-content .post-userID {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-bottom: 9px;
+  margin-top: 10px;
+}
+
+.card-posts .card .posts .post-content .post-userID img {
+  margin-right: 7px;
+  border-radius: 50px;
+}
+
+@media (max-width: 768px) {
+  .add-post .form {
+    width: 100%;
+  }
+  .card-posts {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 21px;
+    margin-top: 30px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .card-posts .card {
+    padding: 4px 8px 5px;
+    width: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .slider {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .slider .whatsNew {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=home.css.map */

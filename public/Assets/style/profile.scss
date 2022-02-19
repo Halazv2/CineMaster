@@ -1,0 +1,43 @@
+.container-r{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile {
+  align-items: center;
+    input {
+      width: 30rem;
+      justify-content: center;
+    }
+  .profile-Container {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    align-items: center;
+    img {
+      width: 30%;
+      border-radius: 150px;
+    }
+  }
+  .btn-profil {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  .profile {
+      input {
+        width: 100%;
+    }
+    .profile-Container {
+      img {
+        width: 50%;
+      }
+    }
+    .btn-profil {
+      flex-direction: column;
+    }
+  }
+}
