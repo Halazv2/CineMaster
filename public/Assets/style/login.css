@@ -21,7 +21,7 @@ body {
           justify-content: center;
   -webkit-backdrop-filter: blur(2px);
           backdrop-filter: blur(2px);
-  background-image: url(/public/Assets/img/background.jpg);
+  background-image: url(../img/background.jpg);
   padding: 30px;
 }
 

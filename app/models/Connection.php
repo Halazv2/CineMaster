@@ -1,42 +1,59 @@
 <?php
 
+
 class Connection
 {
-    private $servername = "localhost";
-    private $username = "root";
-    private $dbname = "cinemaster";
-    private $password = "";
-    private $db;
-    function connect()
+    public $servername = "localhost";
+    public $username = "root";
+    public $dbname = "cinemaster";
+    public $password = "";
+    public $db;
+    public function __construct()
     {
         try {
-            $db = new PDO("mysql:host=" . $this->servername . ";dbname=" . $this->dbname, $this->username, $this->password);
-            $db->exec("set names utf8");
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-            echo "Connected successfully";
-            return $db;
+            $this->db = new PDO("mysql:host=" . $this->servername . ";dbname=" . $this->dbname, $this->username, $this->password);
+            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+            // echo "Connected successfully";
+            // return $this->db;
         } catch (PDOException $e) {
-            echo "Connection failed: " . $e->getMessage();
+            // echo "Connection failed: " . $e->getMessage();
         }
     }
-    static public function insert($data)
+    public function insert($table, $data)
     {
-        $stmt = self::connect()->prepare('INSERT INTO users  (Fname,Lname,email,password) VALUES (:Fname,:Lname,:email,:password)');
-        $stmt->bindParam(':Fname', $data['Fname']);
-        $stmt->bindParam(':Lname', $data['Lname']);
-        $stmt->bindParam(':email', $data['email']);
-        $stmt->bindParam(':password', $data['password']);
-        if ($stmt->execute()) {
-            return 'ok';
-        } else {
-            return 'error';
-        }
-        $stmt->closeCursor();
-        $stmt = null;
+        $keys = array_keys($data);
+
+        $columns = implode(",", $keys);
+
+        $placeholders = implode(",", array_map(function ($key) {
+            return ":$key";
+        }, $keys));
+
+        $query = $this->db->prepare("insert into $table ($columns) values ($placeholders)");
+        return $query->execute($data);
+        // var_dump($query->execute($data));
+        // echo $query.PHP_EOL;
+
     }
+
+    public function selectOne($table, $data)
+    {
+        $query = $this->db->prepare("SELECT * FROM `$table` where email = :email");
+        // $query->bindParam(':email', $this->data["email"], PDO::PARAM_STR);
+        $query->execute($data);
+        return $query->fetchAll(PDO::FETCH_OBJ)[0];
+    }
+    public function execute()
+    {
+        return $this->stmt->execute();
+    }
+
+
 }
 
 // $con = new Connection();
+
+// $con->insert("users", ["Fname", "Lname", "email", "password"], ["hala", "ziani", "halaziani@gmail.com", "halaz"]);
 // echo "
 // ";
 // if (in_array("mysql", PDO::getAvailableDrivers())) {

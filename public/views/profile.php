@@ -1,11 +1,11 @@
 <?php
-require_once "./includes/nav.php";
+require_once "includes/nav.php";
 ?>
 
 <div class="container-r">
     <div class="profile">
         <div class="profile-Container">
-            <img src="../Assets/img/userimg.jpg" alt="">
+            <img src="./public/Assets/img/userimg.jpg" alt="">
         </div>
         <div class="logi">
             <form action="#" method="post">

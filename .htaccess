@@ -1,2 +1,5 @@
+Options All -indexes
+
 RewriteEngine On
+RewriteBase /master
 RewriteRule ^([a-zA-Z0-9\-\_\/]*)$ roote.php?p=$1

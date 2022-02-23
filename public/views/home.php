@@ -1,15 +1,36 @@
 <?php
 require_once "includes/nav.php";
+// require_once "../app/controller/UserController.php";
+
+session_start();
+
+
+function authGuard()
+{
+    var_dump($_SESSION['logged']);
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+
+    if (empty($_SESSION['logged'])) {
+        header("location: ../login");
+    }
+}
+authGuard();
+
+$Posts = new UserController();
+$Posts = $Posts->selectPost();
+// var_dump($Posts);
 ?>
 <div class="container">
     <div class="add-post ">
         <button id="ajoute" class="logout-btn"><i class="fas fa-plus">Add new post</i></button>
         <div class="form" id="form">
-            <form action="" method="post">
+            <form action="user/addpost" method="post">
                 <input type="text" name="title" class="form-control" placeholder="Movie / tv show name" style="margin-bottom: 17px;">
-                <input type="file" name="title" class="form-control" placeholder="Movie / tv show name" style="margin-bottom: 17px;">
+                <input type="file" name="photo" class="form-control" placeholder="Movie / tv show name" style="margin-bottom: 17px;">
 
-                <select class="form-select" aria-label="Default select example" style="margin-top: 17px;">
+                <select class="form-select" name="category" aria-label="Default select example" style="margin-top: 17px;">
                     <option value="Action">Action</option>
                     <option value="Adventure">Adventure</option>
                     <option value="Comedy">Comedy</option>
@@ -21,7 +42,7 @@ require_once "includes/nav.php";
                 <div class="input-group">
                     <textarea class="form-control" placeholder="what do you think of this show" name="description" aria-label="With textarea" style="margin-top: 17px;"></textarea>
                 </div>
-                <button class="btn btn-primary " style="margin-top: 17px;">Post</button>
+                <button class="btn btn-primary" name="ADD" style="margin-top: 17px;">Post</button>
             </form>
         </div>
     </div>
@@ -31,7 +52,7 @@ require_once "includes/nav.php";
             <div class="whatsNew">
                 <div class="whatsNew-Card splide">
                     <figure>
-                        <img src="/public/Assets/img/poster.jpg" alt="">
+                        <img src="./public/Assets/img/poster.jpg" alt="">
                     </figure>
                     <div class="story">
                         <h4><b>Movie Name</b></h4>
@@ -42,7 +63,7 @@ require_once "includes/nav.php";
             <div class="whatsNew">
                 <div class="whatsNew-Card splide">
                     <figure>
-                        <img src="/public/Assets/img/poster.jpg" alt="">
+                        <img src="./public/Assets/img/poster.jpg" alt="">
                     </figure>
                     <div class="story">
                         <h4><b>Movie Name</b></h4>
@@ -53,7 +74,7 @@ require_once "includes/nav.php";
             <div class="whatsNew">
                 <div class="whatsNew-Card splide">
                     <figure>
-                        <img src="/public/Assets/img/poster.jpg" alt="">
+                        <img src="./public/Assets/img/poster.jpg" alt="">
                     </figure>
                     <div class="story">
                         <h4><b>Movie Name</b></h4>
@@ -64,48 +85,35 @@ require_once "includes/nav.php";
         </div>
 
         <div class="card-posts">
-            <div class="card">
-                <div class="posts">
-                    <div class="post-content">
-                        <div class="post-userID" style="display: flex;">
-                            <img src="../Assets/img/userimg.jpg" style="height: 50px;" alt="">
-                            <p><b>Username</b></p>
-                        </div>
-                        <div class="post-image">
-                            <img src="/public/assets/img/poster.jpg" alt="">
-                        </div>
-                        <div class="post-coment">
-                            <form action="" method="post">
-                                <input type="text" name="title" class="form-control" placeholder="what do you think" style="margin: 17px 0px 10px ;">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="posts">
-                    <div class="post-content">
-                        <div class="post-userID" style="display: flex;">
-                            <img src="../Assets/img/userimg.jpg" style="height: 50px;" alt="">
-                            <p><b>Username</b></p>
-                        </div>
-                        <div class="post-image">
-                            <img src="/public/assets/img/poster.jpg" alt="">
-                        </div>
-                        <div class="post-coment">
-                            <form action="" method="post" style="display: flex;">
-                                <input type="text" name="title" class="form-control" placeholder="what do you think" style="margin: 17px 0px 10px ;">
-                            </form>
+
+            <?php foreach ($Posts as $post) : ?>
+                <div class="card">
+                    <div class="posts">
+                        <div class="post-content">
+                            <div class="post-userID" style="display: flex;">
+                                <img src="./public/Assets/img/userimg.jpg" style="height: 50px;" alt="">
+                                <p><b> <?= $post->user ?> </b></p>
+                            </div>
+                            <div class="post-image">
+                                <h4> <?= $post->title ?> </h4>
+                                <h6> <?= $post->category ?> </h6>
+                                <p> <?= $post->description ?> </p>
+                                <img src="imgs/<?= $post['image'] ?>" alt="<?= $post['title'] ?>">
+                            </div>
+                            <div class="post-coment">
+                                <form action="" method="post" style="display: flex;">
+                                    <input type="text" name="title" class="form-control" placeholder="what do you think" style="margin: 17px 0px 10px ;">
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php endforeach; ?>
         </div>
-    </div>
-</div>
-<script src="../Assets/js/addForm.js"></script>
-<script src="../Assets/js/hide.js"></script>
+        <script src="./public/Assets/js/addForm.js"></script>
+        <script src="./public/Assets/js/hide.js"></script>
 
-</body>
+                
+        </body>
 
-</html>
+        </html>
