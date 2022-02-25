@@ -14,10 +14,10 @@ class Post
     {
         $stmt = $this->db->prepare('SELECT 
                             posts.id as post_id,
-                            users.id as usre_id,
+                            users.id as user_id,
                             users.first_name as user,
                             posts.title as title,
-                            posts.photo as photo,
+                            posts.photo as image,
                             posts.description as description,
                             posts.category as category
                             FROM posts
@@ -32,18 +32,35 @@ class Post
     {
         // var_dump($data);
         // var_dump($user_id);
-        $query = $this->db->prepare("INSERT INTO $table (`user_id`,`title`, `photo`, `description`, `category`) values ('$user_id',:title, :photo, :description, :category)");
-        //execute 
+        $query = $this->db->prepare("INSERT INTO $table (`user_id`,`title`, `photo`, `description`, `category`)
+                                    values ('$user_id',:title, :photo, :description, :category)");
         return $query->execute($data);
     }
 
+    public function deletePost($table, $data)
+    {
+        // var_dump($data);
+        // var_dump($post_id);
+        $query = $this->db->prepare("DELETE FROM $table WHERE `id`=:post_id");
+        return $query->execute($data);
+    }
 
+    public function editPost($table, $data)
+    {
+        $query = $this->db->prepare("UPDATE $table SET
+                                    `title`=:title,
+                                    `photo`=:photo,
+                                    `description`=:description,
+                                    `category`=:category 
+                                    WHERE `id`=:post_id");
+        var_dump($data);
 
-    // public function selectPosts($table)
-    // {
-    //     $query=$this->db->prepare("SELECT * FROM `$table`");
-    //     $query-> execute();
-    //     return $query->fetchAll(PDO::FETCH_OBJ);
-    // }
+        $query->bindValue(':title', $data['title']);
+        $query->bindValue(':photo', $data['photo']);
+        $query->bindValue(':description', $data['description']);
+        $query->bindValue(':category', $data['category']);
+        $query->bindValue(':post_id', $data['id']);
 
+        return $query->execute();
+    }
 }

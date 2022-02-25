@@ -25,7 +25,7 @@ if (isset($_POST["submit"])) {
             <div class="form-content">
                 <div class="login-form" id="login">
                     <?php
-                    session_start();
+                    // session_start();
                     if (isset($_SESSION['message'])) : ?>
                         <div class="alert alert-<?= $_SESSION['msg_type'] ?>">
                             <?php echo $_SESSION['message'];
@@ -53,7 +53,7 @@ if (isset($_POST["submit"])) {
                     </form>
                 </div>
                 <div class="signup-form" id="signup" style="display: none;">
-                <?php
+                    <?php
                     if (isset($_SESSION['message'])) : ?>
                         <div class="alert alert-<?= $_SESSION['msg_type'] ?>">
                             <?php echo $_SESSION['message'];
@@ -65,19 +65,19 @@ if (isset($_POST["submit"])) {
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
-                                <input type="text" placeholder="Enter your first name" name="first_name" >
+                                <input type="text" placeholder="Enter your first name" name="first_name">
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
-                                <input type="text" placeholder="Enter your last name" name="last_name" >
+                                <input type="text" placeholder="Enter your last name" name="last_name">
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="email" placeholder="Enter your email" name="email" >
+                                <input type="email" placeholder="Enter your email" name="email">
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" placeholder="Enter your password" name="password" >
+                                <input type="password" placeholder="Enter your password" name="password">
                             </div>
                             <div class="button input-box">
                                 <input type="submit" value="Sumbit" name="submiit">

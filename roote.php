@@ -1,6 +1,6 @@
 
-
 <?php
+session_start();
 function autoload($class)
 {
     $paths = [

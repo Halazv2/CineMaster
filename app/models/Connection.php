@@ -47,17 +47,4 @@ class Connection
     {
         return $this->stmt->execute();
     }
-
-
 }
-
-// $con = new Connection();
-
-// $con->insert("users", ["Fname", "Lname", "email", "password"], ["hala", "ziani", "halaziani@gmail.com", "halaz"]);
-// echo "
-// ";
-// if (in_array("mysql", PDO::getAvailableDrivers())) {
-//     echo " You have PDO for MySQL driver installed ";
-// } else {
-//     echo "PDO driver for MySQL is not installed in your system";
-// }

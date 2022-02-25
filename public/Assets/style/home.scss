@@ -4,6 +4,7 @@ html {
 body {
   // background-color: rgb(255, 255, 255);
   background-color: rgb(41, 41, 41);
+  color: black;
 }
 .add-post {
   display: flex;
@@ -33,7 +34,7 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  vertical-align:middle;
+  vertical-align: middle;
 
   .whatsNew {
     width: 25%;
@@ -79,6 +80,7 @@ body {
           align-items: flex-end;
           margin-bottom: 9px;
           margin-top: 10px;
+          justify-content: space-between;
           img {
             margin-right: 7px;
             border-radius: 50px;

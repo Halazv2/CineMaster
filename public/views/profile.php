@@ -9,9 +9,9 @@ require_once "includes/nav.php";
         </div>
         <div class="logi">
             <form action="#" method="post">
-                        <input type="text" class="form-control " placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" disabled>
-                    <i class="fas fa-lock"></i>
-                    <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" disabled>
+                <input type="text" class="form-control " placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" disabled>
+                <i class="fas fa-lock"></i>
+                <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" disabled>
         </div>
         <div>
             <div class="btn-profil" style="margin-top: 10px;">
